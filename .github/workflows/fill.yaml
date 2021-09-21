@@ -1,0 +1,16 @@
+name: Run script
+
+on:
+  push:
+  schedule:
+    - cron: "0 18 * * MON-FRI"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Launch tests
+        run: |
+          echo test
