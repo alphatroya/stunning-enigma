@@ -1,7 +1,6 @@
 name: Run script
 
 on:
-  push:
   schedule:
     - cron: "0 18 * * MON-FRI"
 
@@ -11,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Launch tests
+      - name: Main script
         run: |
           echo test
