@@ -7,9 +7,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      REDMINE_HOST: ${{secrets.REDMINE_HOST}}
+      REDMINE_API_KEY: ${{secrets.REDMINE_API_KEY}}
     steps:
       - uses: actions/checkout@v2
 
-      - name: Main script
-        run: |
-          echo test
+      - name: Docker Run Action
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ghcr.io/alphatroya/fictional-funicular:latest
+          run: ./main --csv /home/appuser/csv/work.csv
+          options: -v ${{ github.workspace }}:/home/appuser/csv -e REDMINE_API_KEY -e REDMINE_HOST
+
