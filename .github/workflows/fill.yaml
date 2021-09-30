@@ -1,4 +1,4 @@
-name: Run script
+name: Summarize the day
 
 on:
   schedule:
